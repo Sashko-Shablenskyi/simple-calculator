@@ -9,3 +9,7 @@ Calculates simple mathematical operations such as:
 - division;
 - multiplication;
 - operations with percentages
+
+Input is allowed using the on-screen and regular keyboard
+
+Problem with calculating expressions containing negative numbers...
