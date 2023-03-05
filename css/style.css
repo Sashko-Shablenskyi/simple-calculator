@@ -29,7 +29,7 @@
     background-color: var(--bgCircleColor);
     aspect-ratio: 1/1;
     border-radius: 50%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
     z-index: 1;
 }
 
@@ -60,22 +60,8 @@
     backdrop-filter: blur(51px);
     border-radius: 39px;
     z-index: 5;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-/* .calc::after {
-    content: '';
-    background: rgba(84, 0, 0, 0.21);
-    filter: blur(61.5px);
-    border-radius: 39px;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 55%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-} */
 
 .calc__screen{
     position: relative;
@@ -83,7 +69,6 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 25%;
-    text-align: right;
 }
 
 .calc__history {
@@ -102,6 +87,10 @@
     display: flex;
     justify-content: flex-end;
     overflow: hidden;
+    border: none;
+    background: transparent;
+    text-align: right;
+    caret-color: transparent;
 }
 
 .screen__input-field--active {
@@ -118,6 +107,7 @@
     font-size: 24px;
     line-height: 36px;
     overflow: hidden;
+    text-align: right;
 }
 
 .screen__output-field--active {
@@ -141,6 +131,7 @@
 }
 
 .calc__btn {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,10 +139,45 @@
     background: linear-gradient(129.7deg, rgba(255, 255, 255, 0.6) -9.69%, rgba(255, 255, 255, 0.4) 114.23%);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
-    aspect-ratio:1/1;
+    aspect-ratio: 1/1;
     cursor: pointer;
     font-size: 32px;
     color: var(--btnsColor);
+}
+
+.calc__btn--click::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    animation: .5s btn-click;
+}
+
+.calc__btn--click-big::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 27px;
+    animation: .5s btn-click;
+}
+
+@keyframes btn-click {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    15% {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .calc__btn i::before {
@@ -166,14 +192,13 @@
 }
 
 .clear {
-    grid-area:  1/1;
+    grid-area:  1/1/2/3;
+    aspect-ratio: unset;
+    border-radius: 27px;
+
 }
 
 .delete-last-char {
-    grid-area: 1/2;
-}
-
-.percent {
     grid-area: 1/3;
 }
 
